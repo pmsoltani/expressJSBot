@@ -101,29 +101,29 @@ app.post('/webhook/1E32FFAAE6B296AA', (req, res) => {
     console.log('-/-/-/-/-/-/-/-/-/-/-');
     console.log(result);
     console.log('-/-/-/-/-/-/-/-/-/-/-');
-    const chatID = result.chat.id;
-    const message = result.text;
-    const optionsGet = {
-        url: url + '/sendMessage',
-        method: 'GET',
-        qs: {
-            'chat_id': chatID,
-            'text': message
-        }
-    };
-    request(optionsGet, (error, response, body) => {
-        if (!error & response.statusCode == 200) {
-            console.log('Success!');
-            var result = JSON.parse(body);
-            res.send(result);
-        } else if (response.statusCode != 200) {
-            console.log(`Status code: ${response.statusCode}`);
-            res.send('Failed :( - ${response.statusCode}');
-        } else {
-            console.log(`Error code: ${error.statusCode}`);
-            res.send('Failed :( - ${error.statusCode}');
-        }
-    });
+    // const chatID = result.chat.id;
+    // const message = result.text;
+    // const optionsGet = {
+    //     url: url + '/sendMessage',
+    //     method: 'GET',
+    //     qs: {
+    //         'chat_id': chatID,
+    //         'text': message
+    //     }
+    // };
+    // request(optionsGet, (error, response, body) => {
+    //     if (!error & response.statusCode == 200) {
+    //         console.log('Success!');
+    //         var result = JSON.parse(body);
+    //         res.send(result);
+    //     } else if (response.statusCode != 200) {
+    //         console.log(`Status code: ${response.statusCode}`);
+    //         res.send('Failed :( - ${response.statusCode}');
+    //     } else {
+    //         console.log(`Error code: ${error.statusCode}`);
+    //         res.send('Failed :( - ${error.statusCode}');
+    //     }
+    // });
 });
 
 // server
