@@ -97,7 +97,7 @@ app.get('/webhook', (req, res) => {
     });
 });
 app.post('/webhook/1E32FFAAE6B296AA', (req, res) => {
-    const result = req.body;
+    const result = JSON.parse(req.body);
     console.log('-/-/-/-/-/-/-/-/-/-/-');
     console.log(result);
     console.log(req.body);
