@@ -31,12 +31,10 @@ app.get('/', (req, res) => {
 });
 
 app.get('/webhook', (req, res) => {
-    
+
 });
 
 // server
-const serverIP = process.env.IP || 'localhost';
-const serverPORT = process.env.PORT || 5000;
-app.listen(serverPORT,serverIP, () => {
-    console.log(`Running on ${serverIP}:${serverPORT}`);
-});
+const serverIP = process.env.IP;// || 'localhost';
+const serverPORT = process.env.PORT;// || 5000;
+app.listen(serverPORT, serverIP);
