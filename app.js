@@ -21,7 +21,10 @@ app.get('/getupdates', (req, res) => {
     request(optionsGet, (error, response, body) => {
         if (!error & response.statusCode == 200) {
             console.log('Success!');
-            var result = JSON.parse(body);
+            var result = JSON.parse(body).result;
+            console.log(`Type of message is: ${Object.prototype.toString.call(result)}`);
+            console.log(`The last item is:`);
+            console.log(result[result.length - 1]);
             res.send(result);
         } else if (response.statusCode != 200) {
             console.log(`Status code: ${response.statusCode}`);
@@ -94,10 +97,33 @@ app.get('/webhook', (req, res) => {
     });
 });
 app.post('/webhook/1E32FFAAE6B296AA', (req, res) => {
-    res.send(req.body);
+    const result = req.body;
+    const chatID = result.chat.id;
+    const message = result.text;
+    const optionsGet = {
+        url: url + '/sendMessage',
+        method: 'GET',
+        qs: {
+            'chat_id': chatID,
+            'text': message
+        }
+    };
+    request(optionsGet, (error, response, body) => {
+        if (!error & response.statusCode == 200) {
+            console.log('Success!');
+            var result = JSON.parse(body);
+            res.send(result);
+        } else if (response.statusCode != 200) {
+            console.log(`Status code: ${response.statusCode}`);
+            res.send('Failed :( - ${response.statusCode}');
+        } else {
+            console.log(`Error code: ${error.statusCode}`);
+            res.send('Failed :( - ${error.statusCode}');
+        }
+    });
 });
 
 // server
 const serverIP = process.env.IP;
-const serverPORT = process.env.PORT;
-app.listen(serverPORT, serverIP);
+const serverPORT = process.env.PORT || 8000;
+app.listen(serverPORT, serverIP, () => console.log(`Server is Running on ${serverPORT}`));
