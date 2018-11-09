@@ -125,6 +125,7 @@ app.post('/webhook/1E32FFAAE6B296AA', (req, res) => {
     //         res.send('Failed :( - ${error.statusCode}');
     //     }
     // });
+    res.send('Received!');
 });
 
 // server
