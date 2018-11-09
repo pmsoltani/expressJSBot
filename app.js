@@ -133,6 +133,10 @@ app.get('/send', (req, res) => {
     const optionsGet = {
         url: url + '/sendMessage',
         method: 'GET',
+        qs: {
+            'chat_id': '74538385',
+            'text': message
+        }
     };
     request(optionsGet, (error, response, body) => {
         if (!error & response.statusCode == 200) {
