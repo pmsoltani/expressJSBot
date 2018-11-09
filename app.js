@@ -100,6 +100,7 @@ app.post('/webhook/1E32FFAAE6B296AA', (req, res) => {
     const result = req.body;
     console.log('-/-/-/-/-/-/-/-/-/-/-');
     console.log(result);
+    console.log(req.body);
     console.log('-/-/-/-/-/-/-/-/-/-/-');
     // const chatID = result.chat.id;
     // const message = result.text;
