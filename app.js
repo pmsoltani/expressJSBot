@@ -99,8 +99,8 @@ app.get('/webhook', (req, res) => {
 });
 app.post('/1E32FFAAE6B296AA', (req, res) => {
     const result = req.body;
-    const chatID = result['chat']['id'];
-    const message = result['text'];
+    const chatID = result['message']['chat']['id'];
+    const message = result['message']['text'];
     const optionsGet = {
         url: url + '/sendMessage',
         method: 'GET',
@@ -154,3 +154,26 @@ app.get('/send', (req, res) => {
 const serverIP = process.env.IP;
 const serverPORT = process.env.PORT || 8000;
 app.listen(serverPORT, serverIP, () => console.log(`Server is Running on ${serverPORT}`));
+
+const a = {
+    update_id: 36456619,
+    message: {
+        message_id: 21,
+        from: {
+            id: 74538385,
+            is_bot: false,
+            first_name: 'Pooria',
+            last_name: 'Soltani',
+            username: 'pmsoltani',
+            language_code: 'en-US'
+        },
+        chat: {
+            id: 74538385,
+            first_name: 'Pooria',
+            username: 'pmsoltani',
+            type: 'private'
+        },
+        date: 1541850832,
+        text: 'سعدی'
+    }
+}
