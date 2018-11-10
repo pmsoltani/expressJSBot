@@ -41,7 +41,7 @@ app.get('/setwebhook', (req, res) => {
         url: url + '/setWebhook',
         method: 'GET',
         qs: {
-            'url': 'https://expressjsbot.herokuapp.com/webhook/1E32FFAAE6B296AA'
+            'url': 'https://expressjsbot.herokuapp.com/1E32FFAAE6B296AA'
         }
     };
     request(optionsGet, (error, response, body) => {
@@ -96,8 +96,8 @@ app.get('/webhook', (req, res) => {
         }
     });
 });
-app.post('/webhook/1E32FFAAE6B296AA', (req, res) => {
-    const result = JSON.parse(req.body);
+app.post('/1E32FFAAE6B296AA', (req, res) => {
+    const result = req.body;
     console.log('-/-/-/-/-/-/-/-/-/-/-');
     console.log(result);
     console.log(req.body);
