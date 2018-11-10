@@ -99,8 +99,8 @@ app.get('/webhook', (req, res) => {
 });
 app.post('/1E32FFAAE6B296AA', (req, res) => {
     const result = req.body;
-    const chatID = result.chat.id;
-    const message = result.text;
+    const chatID = result['chat']['id'];
+    const message = result['text'];
     const optionsGet = {
         url: url + '/sendMessage',
         method: 'GET',
@@ -122,7 +122,7 @@ app.post('/1E32FFAAE6B296AA', (req, res) => {
             res.send('Failed :( - ${error.statusCode}');
         }
     });
-    res.send('Received!');
+    // res.send('Received!');
 });
 
 app.get('/send', (req, res) => {
